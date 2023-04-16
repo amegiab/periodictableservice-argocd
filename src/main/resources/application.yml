@@ -1,5 +1,4 @@
 spring:
   application:
     name: "periodic-table-service-argocd"
-# Actuator config -----------------------------------------
-management.endpoints.web.exposure.include: "*"
+    version: @project.version@
