@@ -16,7 +16,7 @@
 	<properties>
 		<java.version>11</java.version>
 		<server.host>localhost</server.host>
-		<docker.image.name>registry.hub.docker.com/amegia1/${project.artifactId}:${project.version}</docker.image.name>
+		<docker.image.name>registry.hub.docker.com/amegia1/${project.artifactId}:latest</docker.image.name>
 		<!--suppress UnresolvedMavenProperty -->
 		<docker.registry.username>${DOCKER_REGISTRY_USERNAME}</docker.registry.username>
 		<!--suppress UnresolvedMavenProperty -->
