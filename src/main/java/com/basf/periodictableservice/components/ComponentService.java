@@ -1,6 +1,8 @@
 package com.basf.periodictableservice.components;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import org.springframework.stereotype.Service;
 
@@ -22,7 +24,14 @@ public class ComponentService {
         }else{
             throw new ComponentNotFoundException();
         }
+    }
 
+    public List<Component> getComponents() {
+        List<Component> list = new ArrayList<>();
+        for (Component component : mockComponents.values()) {
+            list.add(component);
+        }
+        return list;
     }
     
 }

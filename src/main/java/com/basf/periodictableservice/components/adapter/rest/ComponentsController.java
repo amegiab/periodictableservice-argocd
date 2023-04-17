@@ -12,6 +12,9 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @RestController()
 public class ComponentsController {
 
@@ -28,6 +31,15 @@ public class ComponentsController {
     @GetMapping(value = "/v1/components/{symbol}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<ComponentDetailsResponse> getComponent(@PathVariable("symbol") String symbol) {
         return new ResponseEntity<ComponentDetailsResponse>(conversionService.convert(componentService.getComponent(symbol), ComponentDetailsResponse.class), HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/v1/components", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<ComponentDetailsResponse>> getComponents() {
+        List<ComponentDetailsResponse> components = componentService.getComponents()
+                .stream()
+                .map(component -> conversionService.convert(component, ComponentDetailsResponse.class))
+                .collect(Collectors.toList());
+        return new ResponseEntity<List<ComponentDetailsResponse>>(components, HttpStatus.OK);
     }
 
 }
