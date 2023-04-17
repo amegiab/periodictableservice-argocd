@@ -42,6 +42,6 @@ spec:
             successThreshold: 1
           resources:
             requests:
-              memory: 64Mi
+              memory: 512M
             limits:
-              memory: 256M
+              memory: 1024M
